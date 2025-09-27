@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var last_facing_direction := "Right"  # Used for idle animations
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 	if input_vector != Vector2.ZERO:
@@ -32,5 +32,3 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("idleRight")
 
 	move_and_slide()
-	
-	
