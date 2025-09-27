@@ -34,6 +34,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
+<<<<<<< HEAD
 
 
 @export var display_time: float = 3.0 # seconds to show the 
+=======
+>>>>>>> c8849d99492119214e6f53df00405274265dc2e2
