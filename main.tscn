@@ -12,7 +12,7 @@ size = Vector2(12, 9)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
 z_index = 1
-position = Vector2(54, -25)
+position = Vector2(1, -9)
 platform_wall_layers = 1
 safe_margin = 2.719
 
@@ -36,4 +36,19 @@ stream = ExtResource("3_h2yge")
 collision_enabled = false
 
 [node name="TileMapLayer2" parent="." instance=ExtResource("4_1bvp3")]
-collision_visibility_mode = 0
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+z_index = 4
+y_sort_enabled = true
+offset_left = -500.0
+offset_top = -391.0
+offset_right = 506.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "SACRIFICES WILL BE MADE."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 0
+justification_flags = 0
