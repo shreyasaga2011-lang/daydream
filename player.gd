@@ -1,52 +1,34 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = 60.0
-var character_direction: Vector2 = Vector2.ZERO
-var last_facing_direction: String = "Right"  # Track last facing direction
+@export var movement_speed: float = 100.0
 
-enum States { IDLE, MOVE }
-var currentState = States.IDLE
+var last_facing_direction := "Right"  # Used for idle animations
 
 func _physics_process(delta: float) -> void:
-	handle_state_transitions()
-	perform_state_actions(delta)
-	move_and_slide()
+	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
+	if input_vector != Vector2.ZERO:
+		velocity = input_vector.normalized() * movement_speed
 
-func handle_state_transitions() -> void:
-	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
-		currentState = States.MOVE
-	else:
-		currentState = States.IDLE
-
-
-func perform_state_actions(delta: float) -> void:
-	match currentState:
-		States.MOVE:
-			character_direction.x = Input.get_axis("ui_left", "ui_right")
-			character_direction.y = Input.get_axis("ui_up", "ui_down")
-			character_direction = character_direction.normalized()
-
-			# Set animation based on direction
-			if character_direction.x < 0:
-				$AnimatedSprite2D.play("walkLeft")
-				last_facing_direction = "Left"
-			elif character_direction.x > 0:
-				$AnimatedSprite2D.play("walkRight")
-				last_facing_direction = "Right"
-			else:
-				# Going vertically — play last facing direction
-				if last_facing_direction == "Left":
-					$AnimatedSprite2D.play("walkLeft")
-				else:
-					$AnimatedSprite2D.play("walkRight")
-
-			velocity = character_direction * movement_speed
-
-		States.IDLE:
-			velocity = velocity.move_toward(Vector2.ZERO, movement_speed * delta)
-
+		# Handle animations based on direction
+		if input_vector.x < 0:
+			$AnimatedSprite2D.play("walkLeft")
+			last_facing_direction = "Left"
+		elif input_vector.x > 0:
+			$AnimatedSprite2D.play("walkRight")
+			last_facing_direction = "Right"
+		else:
+			# If only vertical movement, play last facing direction walk
 			if last_facing_direction == "Left":
-				$AnimatedSprite2D.play("idleLeft")
+				$AnimatedSprite2D.play("walkLeft")
 			else:
-				$AnimatedSprite2D.play("idleRight")
+				$AnimatedSprite2D.play("walkRight")
+	else:
+		velocity = Vector2.ZERO
+
+		if last_facing_direction == "Left":
+			$AnimatedSprite2D.play("idleLeft")
+		else:
+			$AnimatedSprite2D.play("idleRight")
+
+	move_and_slide()
