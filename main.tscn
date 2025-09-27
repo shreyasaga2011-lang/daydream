@@ -19,6 +19,7 @@ safe_margin = 2.719
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 visibility_layer = 3
 z_index = 1
+zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 5.5)
@@ -35,4 +36,4 @@ stream = ExtResource("3_h2yge")
 collision_enabled = false
 
 [node name="TileMapLayer2" parent="." instance=ExtResource("4_1bvp3")]
-use_kinematic_bodies = true
+collision_visibility_mode = 0
