@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqow47bch5ocs"]
+[gd_scene load_steps=3 format=3 uid="uid://cqow47bch5ocs"]
 
+[ext_resource type="PackedScene" uid="uid://4pqund3nukl7" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="AudioStream" uid="uid://c5j88c01cs16v" path="res://suspicious_daydream.wav" id="2_0xm2m"]
 
 [node name="Node" type="Node"]
@@ -7,3 +8,5 @@
 [node name="SuspiciousDaydream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0xm2m")
 autoplay = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
