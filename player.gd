@@ -32,3 +32,5 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("idleRight")
 
 	move_and_slide()
+	
+	
