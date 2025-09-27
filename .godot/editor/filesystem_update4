@@ -1,5 +1,4 @@
-res://name.tscn
+res://node_2d.tscn
 res://main.tscn
+res://background.tscn
 res://tileBackground.tscn
-res://player.tscn
-res://test.txt
