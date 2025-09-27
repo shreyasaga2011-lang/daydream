@@ -1,8 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1758997321
+::res://::1758998269
 DungeonStarter.png::CompressedTexture2D::3776394799844057591::1758997321::1758997321::1::::<><><>0<>0<>df35532cbc4527309605d5492defb1e6<>res://.godot/imported/DungeonStarter.png-a172d6719c971d6506bb8a5b56d1228c.ctex::
+House (Outside And Inside) Tileset.png::CompressedTexture2D::6819643535878650187::1758998209::1758998209::1::::<><><>0<>0<>a13a3ee8ee6f2961e33835771f3e15c7<>res://.godot/imported/House (Outside And Inside) Tileset.png-60c8e0e5a0b95d75b93148d88a48fb21.ctex::
+House (Outside) Tileset.png::CompressedTexture2D::6722532188193729336::1758998269::1758998270::1::::<><><>0<>0<>1a7187625628aae48e5f7940c3b0f79e<>res://.godot/imported/House (Outside) Tileset.png-1002cf3d65358bffb5eac5ebdca2ec45.ctex::
 main.tscn::PackedScene::5926153398409090926::1758996032::0::1::::<><><>0<>0<><>::
 new_circle_shape_2d.tres::CircleShape2D::-1::1758996609::0::1::::<><><>0<>0<><>::
+new_sphere_shape_3d.tres::SphereShape3D::-1::1758997396::0::1::::<><><>0<>0<><>::
 player.tscn::PackedScene::-1::1758996581::0::1::::<><><>0<>0<><>::
 test.txt::TextFile::-1::1758996581::0::1::::<><><>0<>0<><>::
-tileBackground.tscn::PackedScene::5216339289699003991::1758996575::0::1::::<><><>0<>0<><>::
+tileBackground.tscn::PackedScene::5216339289699003991::1758997358::0::1::::<><><>0<>0<><>::uid://bt2kw2h4kca0v::::res://DungeonStarter.png
