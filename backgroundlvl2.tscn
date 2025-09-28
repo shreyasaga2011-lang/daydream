@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://b6edet8n1akny"]
+[gd_scene load_steps=12 format=4 uid="uid://b4j6vq4b2f5g6"]
 
 [ext_resource type="Texture2D" uid="uid://c4fqsd1g20o0j" path="res://House (Outside And Inside) Tileset.png" id="1_gstld"]
 [ext_resource type="Texture2D" uid="uid://c21pegfa725qi" path="res://House (Outside) Tileset.png" id="2_ewonf"]
 [ext_resource type="Texture2D" uid="uid://bt2kw2h4kca0v" path="res://DungeonStarter.png" id="3_dngll"]
 [ext_resource type="PackedScene" uid="uid://4pqund3nukl7" path="res://player.tscn" id="4_ewonf"]
-[ext_resource type="PackedScene" uid="uid://dd5y7i7dmi4fi" path="res://blindness.tscn" id="5_dngll"]
+[ext_resource type="PackedScene" path="res://blindness.tscn" id="5_dngll"]
+[ext_resource type="PackedScene" uid="uid://cj23bxwe46j42" path="res://scary amalmalmalmalmlmalmlam.tscn" id="6_jtly7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtly7"]
 texture = ExtResource("1_gstld")
@@ -1071,3 +1072,6 @@ zoom = Vector2(2, 2)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_dngll")
+
+[node name="Node2D2" parent="." instance=ExtResource("6_jtly7")]
+position = Vector2(678, 369.5)
