@@ -61,12 +61,3 @@ func _physics_process(_delta):
 			$AnimatedSprite2D.play("idleRight")
 
 	move_and_slide()
-
-func _process(_delta):
-	if light_sprite:
-		light_sprite.global_position = global_position
-
-func apply_sacrifice(sacrifice_type: String):
-	if sacrifice_type == "sight" and light_sprite:
-		light_radius *= 0.5
-		light_sprite.scale = Vector2(light_radius/128, light_radius/128)
