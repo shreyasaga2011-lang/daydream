@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var flash_duration := 0.3
-@export var detection_radius := 150  # distance from player to trigger flash
+@export var detection_radius := 45  # distance from player to trigger flash
 var npc_id := "NPC1"  # unique ID for this NPC
 
 var flash_rect: ColorRect
