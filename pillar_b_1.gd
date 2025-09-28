@@ -43,7 +43,7 @@ func activate():
 	base_sprite.modulate = get_color_bright(color_name)
 	
 	Global.activated_pillars += 1
-	if(Global.activated_pillars == 3):
+	if(Global.activated_pillars == 4):
 		print(Global.activated_pillars)
 	
 	# Activate matching pillars
