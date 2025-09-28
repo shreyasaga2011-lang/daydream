@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=3 format=3 uid="uid://hdkcttx0ijbp"]
 
 [ext_resource type="Texture2D" uid="uid://biiqtsi3hcy1t" path="res://pillarstuff.png" id="1_0qg1o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm6p8"]
 radius = 18.0
+=======
+[gd_scene load_steps=0 format=3 uid="uid://hdkcttx0ijbp"]
+>>>>>>> cac93c2ea650cbeb8aadd9fd4799be7231e1440d
 
 [node name="Pillar" type="Node2D"]
 
