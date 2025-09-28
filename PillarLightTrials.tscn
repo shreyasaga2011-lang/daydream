@@ -22,7 +22,7 @@ glow_hdr_luminance_cap = 256.0
 script = ExtResource("1_fcqkt")
 
 [node name="PillarA1" type="Node2D" parent="."]
-position = Vector2(57, 1)
+position = Vector2(56, -41)
 script = ExtResource("1_tmbiy")
 
 [node name="ActivationArea" type="Area2D" parent="PillarA1"]
