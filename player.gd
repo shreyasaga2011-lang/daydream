@@ -32,14 +32,7 @@ func _physics_process(_delta: float) -> void:
 			$AnimatedSprite2D.play("idleRight")
 
 	move_and_slide()
-<<<<<<< HEAD
-	
-	
-<<<<<<< HEAD
+
 
 
 @export var display_time: float = 3.0 # seconds to show the 
-=======
->>>>>>> c8849d99492119214e6f53df00405274265dc2e2
-=======
->>>>>>> 24cce8597e9eb893e005630286c027746f36ff87
