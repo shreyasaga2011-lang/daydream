@@ -1,11 +1,12 @@
 extends Node2D
 
-@export var activation_delay := 0.5  # seconds before NPC triggers
 @export var flash_duration := 0.3    # seconds for fade in/out
+@export var detection_radius := 100  # radius around NPC to detect player
 
-var activated := false
 var flash_rect: ColorRect
 var canvas_layer: CanvasLayer
+var player_in_area := false
+var activated := false
 
 func _ready():
 	# Create CanvasLayer so the flash is on top of everything
@@ -29,15 +30,28 @@ func _ready():
 
 	canvas_layer.add_child(flash_rect)
 
-	# Automatically activate after a delay
-	await get_tree().create_timer(activation_delay).timeout
-	activate()
+	# Create detection area
+	var area = Area2D.new()
+	var shape = CircleShape2D.new()
+	shape.radius = detection_radius
+	var collision = CollisionShape2D.new()
+	collision.shape = shape
+	area.add_child(collision)
+	add_child(area)
 
-func activate():
-	if activated:
-		return
-	activated = true
-	screen_flash()
+	# Connect signals to detect player
+	area.body_entered.connect(_on_body_entered)
+	area.body_exited.connect(_on_body_exited)
+
+func _on_body_entered(body):
+	if body.name == "Player" and not activated:
+		player_in_area = true
+		activated = true
+		screen_flash()
+
+func _on_body_exited(body):
+	if body.name == "Player":
+		player_in_area = false
 
 func screen_flash():
 	# Prevent double running
@@ -45,7 +59,7 @@ func screen_flash():
 		return
 
 	var tween = create_tween()
-	# Fade screen to white in flash_duration seconds
+	# Fade screen to white
 	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 1), flash_duration / 2)
 	# Fade back to transparent
 	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 0), flash_duration / 2).set_delay(flash_duration / 2)
