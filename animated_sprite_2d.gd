@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var flash_duration := 0.3
-@export var detection_radius := 45  # distance from player to trigger flash
+@export var detection_radius := 60  # distance from player to trigger flash
 @export var jumpscare_sound: AudioStream = preload("res://jumpscare.wav")
 
 var npc_id := "NPC1"  # unique ID for this NPC
