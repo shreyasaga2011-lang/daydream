@@ -5,13 +5,29 @@ extends Node
 
 var activated_count := 0
 var flash_rect: ColorRect
+var canvas_layer: CanvasLayer
 
 func _ready():
-	# Create a fullscreen white overlay (transparent at first)
+	# Create a CanvasLayer so the flash is on top of everything
+	canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100
+	add_child(canvas_layer)
+
+	# Create fullscreen white overlay (transparent initially)
 	flash_rect = ColorRect.new()
-	flash_rect.color = Color(1, 1, 1, 0) # white transparent
-	flash_rect.size = get_viewport().get_visible_rect().size
-	add_child(flash_rect)
+	flash_rect.color = Color(1, 1, 1, 0)
+
+	# Stretch to cover the entire screen
+	flash_rect.anchor_left = 0
+	flash_rect.anchor_top = 0
+	flash_rect.anchor_right = 1
+	flash_rect.anchor_bottom = 1
+	flash_rect.offset_left = 0
+	flash_rect.offset_top = 0
+	flash_rect.offset_right = 0
+	flash_rect.offset_bottom = 0
+
+	canvas_layer.add_child(flash_rect)
 
 func button_activate():
 	activated_count += 1
