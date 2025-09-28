@@ -42,7 +42,11 @@ func _on_body_exited(body):
 func activate():
 	activated = true
 	base_sprite.modulate = get_color_bright(color_name)
-
+	
+	Global.activated_pillars += 1
+	if(Global.activated_pillars == 3):
+		print("yay")
+	
 	# Activate matching pillars
 	for path in matching_pillars:
 		var pillar = get_node_or_null(path)
