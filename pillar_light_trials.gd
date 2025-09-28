@@ -38,18 +38,21 @@ func _process(delta):
 	if Global.activated_pillars == total_buttons:
 		flash_and_transition()
 
+
+
+
+
 func flash_and_transition():
-	# Prevent double running
 	if not is_instance_valid(flash_rect) or flash_rect.color.a > 0:
 		return
-	
+
 	var tween = create_tween()
 
-	# Fade screen to white in 0.3s
-	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 1), 0.3)
-
-	# After fade, change scene
-	tween.tween_callback(Callable(self, "_do_scene_change")).set_delay(0.3)
-
-func _do_scene_change():
-	get_tree().change_scene_to_file(next_scene_path)
+	# Fade in quickly to white (flash)
+	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 1), 0.15)
+	
+	# Fade out back to transparent
+	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 0), 0.15)
+	
+	# After fade in/out, change scene
+	tween.tween_callback(Callable(self, "_do_scene_change"))
