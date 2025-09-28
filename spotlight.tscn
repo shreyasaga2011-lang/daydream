@@ -14,8 +14,8 @@ script = ExtResource("1_scnk2")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_b6g0u")
-offset_left = -112166.0
-offset_top = -77200.0
-offset_right = 116468.0
-offset_bottom = 48250.0
+offset_left = -112229.0
+offset_top = -77052.0
+offset_right = 116405.0
+offset_bottom = 48398.0
 color = Color(0, 0, 0, 0.972549)
