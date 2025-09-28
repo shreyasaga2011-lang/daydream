@@ -10,6 +10,9 @@ var darkness_overlay: ColorRect
 var light_sprite: Sprite2D
 
 func _ready():
+	# Assign this player to global for access everywhere
+	Global.player = self
+
 	# Create a full-screen black overlay
 	darkness_overlay = ColorRect.new()
 	darkness_overlay.color = Color(0, 0, 0, 1)  # fully black
@@ -37,8 +40,6 @@ func _ready():
 	canvas.add_child(light_sprite)
 
 func _physics_process(_delta):
-	
-	
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 	if input_vector != Vector2.ZERO:
