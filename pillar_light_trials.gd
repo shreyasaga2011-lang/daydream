@@ -15,6 +15,6 @@ func go_to_next_scene():
 	
 func _process(delta) -> void:
 	if(Global.activated_pillars == 3):
-		print()
+		get_tree().change_scene_to_file("res://backgroundlvl2.tscn")
 	pass
 	
