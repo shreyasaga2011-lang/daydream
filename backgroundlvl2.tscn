@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b4j6vq4b2f5g6"]
+[gd_scene load_steps=13 format=4 uid="uid://b4j6vq4b2f5g6"]
 
 [ext_resource type="Texture2D" uid="uid://c4fqsd1g20o0j" path="res://House (Outside And Inside) Tileset.png" id="1_gstld"]
 [ext_resource type="Texture2D" uid="uid://c21pegfa725qi" path="res://House (Outside) Tileset.png" id="2_ewonf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4pqund3nukl7" path="res://player.tscn" id="4_ewonf"]
 [ext_resource type="PackedScene" uid="uid://dd5y7i7dmi4fi" path="res://blindness.tscn" id="5_dngll"]
 [ext_resource type="PackedScene" uid="uid://cj23bxwe46j42" path="res://scary amalmalmalmalmlmalmlam.tscn" id="6_jtly7"]
+[ext_resource type="AudioStream" uid="uid://c5j88c01cs16v" path="res://suspicious_daydream.wav" id="7_0ft2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtly7"]
 texture = ExtResource("1_gstld")
@@ -1051,6 +1052,10 @@ size = Vector2(12, 9)
 
 [node name="darkness" type="Node2D"]
 position = Vector2(1, 0)
+
+[node name="SuspiciousDaydream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0ft2v")
+volume_db = 1.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 show_behind_parent = true
