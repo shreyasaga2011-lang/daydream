@@ -1,12 +1,21 @@
-[gd_scene format=3 uid="uid://hdkcttx0ijbp"]
+[gd_scene load_steps=3 format=3 uid="uid://hdkcttx0ijbp"]
+
+[ext_resource type="Texture2D" uid="uid://biiqtsi3hcy1t" path="res://pillarstuff.png" id="1_0qg1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm6p8"]
+radius = 18.0
 
 [node name="Pillar" type="Node2D"]
 
 [node name="BaseSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_0qg1o")
 
 [node name="Glow" type="PointLight2D" parent="."]
 visible = false
+color = Color(1, 0, 0.45882353, 1)
+energy = 6.7
 
 [node name="Activation Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Activation Area"]
+shape = SubResource("CircleShape2D_mm6p8")
