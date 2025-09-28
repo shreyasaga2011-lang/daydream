@@ -1,16 +1,47 @@
 extends CharacterBody2D
 
 @export var movement_speed: float = 100.0
+@export var light_radius: float = 200.0  # radius of torchlight
 
-var last_facing_direction := "Right"  # Used for idle animations
+var last_facing_direction := "Right"
 
-func _physics_process(_delta: float) -> void:
+# Internal nodes for light
+var darkness_overlay: ColorRect
+var light_sprite: Sprite2D
+
+func _ready():
+	# Create a full-screen black overlay
+	darkness_overlay = ColorRect.new()
+	darkness_overlay.color = Color(0, 0, 0, 1)  # fully black
+	darkness_overlay.size = get_viewport_rect().size  # corrected property
+	var canvas = CanvasLayer.new()
+	canvas.layer = 100  # ensure it's on top
+	canvas.add_child(darkness_overlay)
+	get_tree().current_scene.add_child(canvas)
+
+	# Create a light sprite on top
+	light_sprite = Sprite2D.new()
+	var grad = Gradient.new()
+	grad.add_point(0.0, Color(1,1,1,1))  # bright center
+	grad.add_point(1.0, Color(1,1,1,0))  # transparent edges
+
+	var tex = GradientTexture2D.new()
+	tex.gradient = grad
+	tex.width = 256
+	tex.height = 256
+	tex.fill = GradientTexture2D.FILL_RADIAL
+
+	light_sprite.texture = tex
+	light_sprite.centered = true
+	light_sprite.scale = Vector2(light_radius/128, light_radius/128)
+	canvas.add_child(light_sprite)
+
+func _physics_process(_delta):
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 	if input_vector != Vector2.ZERO:
 		velocity = input_vector.normalized() * movement_speed
 
-		# Handle animations based on direction
 		if input_vector.x < 0:
 			$AnimatedSprite2D.play("walkLeft")
 			last_facing_direction = "Left"
@@ -18,14 +49,12 @@ func _physics_process(_delta: float) -> void:
 			$AnimatedSprite2D.play("walkRight")
 			last_facing_direction = "Right"
 		else:
-			# If only vertical movement, play last facing direction walk
 			if last_facing_direction == "Left":
 				$AnimatedSprite2D.play("walkLeft")
 			else:
 				$AnimatedSprite2D.play("walkRight")
 	else:
 		velocity = Vector2.ZERO
-
 		if last_facing_direction == "Left":
 			$AnimatedSprite2D.play("idleLeft")
 		else:
@@ -33,6 +62,11 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
+func _process(_delta):
+	if light_sprite:
+		light_sprite.global_position = global_position
 
-
-@export var display_time: float = 3.0 # seconds to show the 
+func apply_sacrifice(sacrifice_type: String):
+	if sacrifice_type == "sight" and light_sprite:
+		light_radius *= 0.5
+		light_sprite.scale = Vector2(light_radius/128, light_radius/128)
