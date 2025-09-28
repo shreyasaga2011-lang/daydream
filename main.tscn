@@ -13,7 +13,7 @@ size = Vector2(12, 9)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 z_index = 1
-position = Vector2(39, -44)
+position = Vector2(-1, -2)
 platform_wall_layers = 1
 safe_margin = 2.719
 
@@ -34,18 +34,20 @@ autoplay = true
 stream = ExtResource("3_h2yge")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(-20, 34)
 collision_enabled = false
 
 [node name="TileMapLayer2" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(-17, 39)
 
 [node name="Label" type="Label" parent="."]
 top_level = true
 z_index = 4
 y_sort_enabled = true
-offset_left = -465.0
-offset_top = -420.0
-offset_right = 541.0
-offset_bottom = 29.0
+offset_left = -498.0
+offset_top = -384.0
+offset_right = 508.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "SACRIFICES WILL BE MADE."
@@ -55,3 +57,4 @@ autowrap_trim_flags = 0
 justification_flags = 0
 
 [node name="Pillar" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(-52, -40)
