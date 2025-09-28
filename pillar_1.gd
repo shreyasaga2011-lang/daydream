@@ -42,7 +42,7 @@ func activate():
 	
 	Global.activated_pillars += 1
 	if(Global.activated_pillars == 3):
-		print("yay")
+		print(Global.activated_pillars)
 	
 	# Activate matching pillars
 	for path in matching_pillars:

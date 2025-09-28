@@ -55,4 +55,3 @@ autowrap_trim_flags = 0
 justification_flags = 0
 
 [node name="Pillar" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(-7, -112)

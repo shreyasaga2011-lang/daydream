@@ -5,7 +5,6 @@ extends Node2D  # This script is for PillarB1
 
 @onready var base_sprite = $BaseSprite2
 @onready var activation_area = $ActivationArea2
-@onready var world_environment = $WorldEnvironment  # placeholder if you have a WorldEnvironment node
 
 var activated = false
 var player_in_area = false
@@ -45,7 +44,7 @@ func activate():
 	
 	Global.activated_pillars += 1
 	if(Global.activated_pillars == 3):
-		print("yay")
+		print(Global.activated_pillars)
 	
 	# Activate matching pillars
 	for path in matching_pillars:

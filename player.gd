@@ -37,6 +37,8 @@ func _ready():
 	canvas.add_child(light_sprite)
 
 func _physics_process(_delta):
+	
+	
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 	if input_vector != Vector2.ZERO:
