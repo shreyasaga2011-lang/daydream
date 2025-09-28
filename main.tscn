@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://c5j88c01cs16v" path="res://suspicious_daydream.wav" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://dt435fm8k2snq" path="res://daydreaming_deafening_cacophony.wav" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cgk3l07tythb8" path="res://tileBackground.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://hdkcttx0ijbp" path="res://PillarLightTrials.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c0fyxxgimfj27" path="res://PillarLightTrials.tscn" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(12, 9)

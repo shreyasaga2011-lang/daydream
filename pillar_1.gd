@@ -61,3 +61,4 @@ func get_color_bright(name: String) -> Color:
 		"Blue": return Color(0, 0, 1)
 		"Green": return Color(0, 1, 0)
 		_: return Color(1, 1, 1)
+		
