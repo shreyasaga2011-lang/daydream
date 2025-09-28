@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://hdkcttx0ijbp"]
+
+[node name="Pillar" type="Node2D"]
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+
+[node name="Glow" type="PointLight2D" parent="."]
+visible = false
+
+[node name="Activation Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Activation Area"]
