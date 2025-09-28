@@ -2,10 +2,13 @@ extends Node2D
 
 @export var flash_duration := 0.3
 @export var detection_radius := 45  # distance from player to trigger flash
+@export var jumpscare_sound: AudioStream = preload("res://jumpscare.wav")
+
 var npc_id := "NPC1"  # unique ID for this NPC
 
 var flash_rect: ColorRect
 var canvas_layer: CanvasLayer
+var audio_player: AudioStreamPlayer
 var activated := false
 
 func _ready():
@@ -27,6 +30,11 @@ func _ready():
 	flash_rect.offset_bottom = 0
 	canvas_layer.add_child(flash_rect)
 
+	# Create AudioStreamPlayer for jumpscare
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = jumpscare_sound
+	add_child(audio_player)
+
 func _process(delta):
 	if activated:
 		return
@@ -36,14 +44,22 @@ func _process(delta):
 		var distance = global_position.distance_to(player_node.global_position)
 		if distance <= detection_radius:
 			activated = true
-			screen_flash()
+			do_jumpscare()
 
-func screen_flash():
-	if not is_instance_valid(flash_rect) or flash_rect.color.a > 0:
-		return
+func do_jumpscare():
+	# Mute Master bus
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 
+	# Play jumpscare sound
+	audio_player.play()
+
+	# Flash screen
 	var tween = create_tween()
-	# Fade to white
-	tween.tween_property(flash_rect, "color", Color(1,1,1,1), flash_duration/2)
-	# Fade back to transparent
-	tween.tween_property(flash_rect, "color", Color(1,1,1,0), flash_duration/2).set_delay(flash_duration/2)
+	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 1), flash_duration / 2)
+	tween.tween_property(flash_rect, "color", Color(1, 1, 1, 0), flash_duration / 2).set_delay(flash_duration / 2)
+
+	# Resume audio after flash + sound
+	tween.tween_callback(Callable(self, "_resume_audio")).set_delay(flash_duration)
+
+func _resume_audio():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
